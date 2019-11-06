@@ -1,0 +1,12 @@
+.keyboard {
+  padding: 10px;
+
+  border: 1px solid $keyboard-background;
+  background-color: $keyboard-background;
+}
+
+.row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
