@@ -51,17 +51,17 @@ const KEYS_CODE = [ {code:'Backquote',en:['`','~'],ru:['ё','Ё']},
     {code:'Comma',en:[',','<'],ru:['б','Б']},
     {code:'Period',en:['.','>'],ru:['ю','Ю']},
     {code:'Slash',en:['/','?'],ru:['/','?']},
-    {code:'ArrowUp',en:['^|','^|'],ru:['^|','^|']},
+    {code:'ArrowUp',en:['',''],ru:['','']},
     {code:'ShiftRight',en:['shift','shift'],ru:['shift','shift']},
     {code:'ControlLeft',en:['ctrl','ctrl'],ru:['ctrl','ctrl']},
     {code:'AltLeft',en:['alt','alt'],ru:['alt','alt']},
-    {code:'MetaLeft',en:['command','command'],ru:['command','command']},
+    {code:'MetaLeft',en:['',''],ru:['','']},
     {code:'Space',en:[' ',' '],ru:[' ',' ']},
-    {code:'MetaRight',en:['command','command'],ru:['command','command']},
+    {code:'MetaRight',en:['',''],ru:['','']},
     {code:'AltRight',en:['alt','alt'],ru:['alt','alt']},
-    {code:'ArrowLeft',en:['<-','<-'],ru:['<-','<-']},
-    {code:'ArrowDown',en:['|','|'],ru:['|','|']},
-    {code:'ArrowRight',en:['->','->'],ru:['->','->']},
+    {code:'ArrowLeft',en:['',''],ru:['','']},
+    {code:'ArrowDown',en:['',''],ru:['','']},
+    {code:'ArrowRight',en:['',''],ru:['','']},
     {code: 'ControlRight',en:['ctrl','ctrl'],ru:['ctrl','ctrl']} ];
 
 const Keyboard = {
@@ -92,7 +92,28 @@ const Keyboard = {
                 button.classList.add('key--wide');
             }
 
-            switch (key.code) {
+             switch (key.code) {
+                case 'ArrowUp':
+                    button.classList.add('icon-up-dir');
+                    break;
+
+                case 'ArrowLeft':
+                    button.classList.add('icon-left-dir');
+                    break;
+
+                case 'ArrowDown':
+                    button.classList.add('icon-down-dir');
+                    break;
+
+                case 'ArrowRight':
+                    button.classList.add('icon-right-dir');
+                    break;
+
+                case 'MetaLeft':
+                case 'MetaRight':
+                    button.classList.add('icon-windows');
+                    break;
+
                 case 'Backspace':
                     this.properties.capsLock = !this.properties.capsLock;
                     button.addEventListener('click', () => {
