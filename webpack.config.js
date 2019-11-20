@@ -6,7 +6,6 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const isDevelopment = argv.mode === 'development';
-const isProduction = !isDevelopment;
 const distPath = path.join(__dirname, '/dist');
 
 const config = {
@@ -38,7 +37,7 @@ const config = {
                     loader: 'postcss-loader',
                     options: {
                         plugins: [
-                            isProduction ? require('cssnano') : () => {},
+                            !isDevelopment ? require('cssnano') : () => {},
                             require('autoprefixer')({
                                 browsers: ['last 2 versions']
                             })
@@ -66,7 +65,7 @@ const config = {
             template: './src/index.html'
         })
     ],
-    optimization: isProduction ? {
+    optimization: !isDevelopment ? {
         minimizer: [
             new UglifyJsPlugin({
                 sourceMap: true,

@@ -1,238 +1,245 @@
-const LANGUAGES = ['en', 'ru'];
-const KEYS_CODE = [ {code:'Backquote',en:['`','~'],ru:['ё','Ё']},
-    {code:'Digit1',en:['1','!'],ru:['1','!']},
-    {code:'Digit2',en:['2','@'],ru:['2','"']},
-    {code:'Digit3',en:['3','#'],ru:['3','№']},
-    {code:'Digit4',en:['4','$'],ru:['4','%']},
-    {code:'Digit5',en:['5','%'],ru:['5',':']},
-    {code:'Digit6',en:['6','^'],ru:['6',',']},
-    {code:'Digit7',en:['7','&'],ru:['7','.']},
-    {code:'Digit8',en:['8','*'],ru:['8',';']},
-    {code:'Digit9',en:['9','('],ru:['9','(']},
-    {code:'Digit0',en:['0',')'],ru:['0',')']},
-    {code:'Minus',en:['-','_'],ru:['-','_']},
-    {code:'Equal',en:['=','+'],ru:['=','+']},
-    {code:'Backspace',en:['delete','delete'],ru:['delete','delete']},
-    {code:'Tab',en:['tab','tab'],ru:['tab','tab']},
-    {code:'KeyQ',en:['q','Q'],ru:['й','Й']},
-    {code:'KeyW',en:['w','W'],ru:['ц','Ц']},
-    {code:'KeyE',en:['e','E'],ru:['у','У']},
-    {code:'KeyR',en:['r','R'],ru:['к','К']},
-    {code:'KeyT',en:['t','T'],ru:['е','Е']},
-    {code:'KeyY',en:['y','Y'],ru:['н','Н']},
-    {code:'KeyU',en:['u','U'],ru:['г','Г']},
-    {code:'KeyI',en:['i','I'],ru:['ш','Ш']},
-    {code:'KeyO',en:['o','O'],ru:['щ','Щ']},
-    {code:'KeyP',en:['p','P'],ru:['з','З']},
-    {code:'BracketLeft',en:['[','{'],ru:['х','Х']},
-    {code:'BracketRight',en:[']','}'],ru:['ъ','Ъ']},
-    {code:'Backslash',en:['\\','|'],ru:['\\','/']},
-    {code:'CapsLock',en:['caps lock','caps lock'],ru:['caps lock','caps lock']},
-    {code:'KeyA',en:['a','A'],ru:['ф','Ф']},
-    {code:'KeyS',en:['s','S'],ru:['ы','Ы']},
-    {code:'KeyD',en:['d','D'],ru:['в','В']},
-    {code:'KeyF',en:['f','F'],ru:['а','А']},
-    {code:'KeyG',en:['g','G'],ru:['п','П']},
-    {code:'KeyH',en:['h','H'],ru:['р','Р']},
-    {code:'KeyJ',en:['j','J'],ru:['о','О']},
-    {code:'KeyK',en:['k','K'],ru:['л','Л']},
-    {code:'KeyL',en:['l','L'],ru:['д','Д']},
-    {code:'Semicolon',en:[';',':'],ru:['ж','Ж']},
-    {code:'Quote',en:['\'','"'],ru:['э','Э']},
-    {code:'Enter',en:['enter','enter'],ru:['enter','enter']},
-    {code:'ShiftLeft',en:['shift','shift'],ru:['shift','shift']},
-    {code:'KeyZ',en:['z','Z'],ru:['я','Я']},
-    {code:'KeyX',en:['x','X'],ru:['ч','Ч']},
-    {code:'KeyC',en:['c','C'],ru:['с','С']},
-    {code:'KeyV',en:['v','V'],ru:['м','М']},
-    {code:'KeyB',en:['b','B'],ru:['и','И']},
-    {code:'KeyN',en:['n','N'],ru:['т','Т']},
-    {code:'KeyM',en:['m','M'],ru:['ь','Ь']},
-    {code:'Comma',en:[',','<'],ru:['б','Б']},
-    {code:'Period',en:['.','>'],ru:['ю','Ю']},
-    {code:'Slash',en:['/','?'],ru:['/','?']},
-    {code:'ArrowUp',en:['',''],ru:['','']},
-    {code:'ShiftRight',en:['shift','shift'],ru:['shift','shift']},
-    {code:'ControlLeft',en:['ctrl','ctrl'],ru:['ctrl','ctrl']},
-    {code:'AltLeft',en:['alt','alt'],ru:['alt','alt']},
-    {code:'MetaLeft',en:['',''],ru:['','']},
-    {code:'Space',en:[' ',' '],ru:[' ',' ']},
-    {code:'MetaRight',en:['',''],ru:['','']},
-    {code:'AltRight',en:['alt','alt'],ru:['alt','alt']},
-    {code:'ArrowLeft',en:['',''],ru:['','']},
-    {code:'ArrowDown',en:['',''],ru:['','']},
-    {code:'ArrowRight',en:['',''],ru:['','']},
-    {code: 'ControlRight',en:['ctrl','ctrl'],ru:['ctrl','ctrl']} ];
+const KEYS_CODE = [{ code: 'Backquote', en: ['`', '~'], ru: ['ё', 'Ё'] },
+  { code: 'Digit1', en: ['1', '!'], ru: ['1', '!'] },
+  { code: 'Digit2', en: ['2', '@'], ru: ['2', '"'] },
+  { code: 'Digit3', en: ['3', '#'], ru: ['3', '№'] },
+  { code: 'Digit4', en: ['4', '$'], ru: ['4', '%'] },
+  { code: 'Digit5', en: ['5', '%'], ru: ['5', ':'] },
+  { code: 'Digit6', en: ['6', '^'], ru: ['6', ','] },
+  { code: 'Digit7', en: ['7', '&'], ru: ['7', '.'] },
+  { code: 'Digit8', en: ['8', '*'], ru: ['8', ';'] },
+  { code: 'Digit9', en: ['9', '('], ru: ['9', '('] },
+  { code: 'Digit0', en: ['0', ')'], ru: ['0', ')'] },
+  { code: 'Minus', en: ['-', '_'], ru: ['-', '_'] },
+  { code: 'Equal', en: ['=', '+'], ru: ['=', '+'] },
+  { code: 'Backspace', en: ['delete', 'delete'], ru: ['delete', 'delete'] },
+  { code: 'Tab', en: ['tab', 'tab'], ru: ['tab', 'tab'] },
+  { code: 'KeyQ', en: ['q', 'Q'], ru: ['й', 'Й'] },
+  { code: 'KeyW', en: ['w', 'W'], ru: ['ц', 'Ц'] },
+  { code: 'KeyE', en: ['e', 'E'], ru: ['у', 'У'] },
+  { code: 'KeyR', en: ['r', 'R'], ru: ['к', 'К'] },
+  { code: 'KeyT', en: ['t', 'T'], ru: ['е', 'Е'] },
+  { code: 'KeyY', en: ['y', 'Y'], ru: ['н', 'Н'] },
+  { code: 'KeyU', en: ['u', 'U'], ru: ['г', 'Г'] },
+  { code: 'KeyI', en: ['i', 'I'], ru: ['ш', 'Ш'] },
+  { code: 'KeyO', en: ['o', 'O'], ru: ['щ', 'Щ'] },
+  { code: 'KeyP', en: ['p', 'P'], ru: ['з', 'З'] },
+  { code: 'BracketLeft', en: ['[', '{'], ru: ['х', 'Х'] },
+  { code: 'BracketRight', en: [']', '}'], ru: ['ъ', 'Ъ'] },
+  { code: 'Backslash', en: ['\\', '|'], ru: ['\\', '/'] },
+  { code: 'CapsLock', en: ['caps lock', 'caps lock'], ru: ['caps lock', 'caps lock'] },
+  { code: 'KeyA', en: ['a', 'A'], ru: ['ф', 'Ф'] },
+  { code: 'KeyS', en: ['s', 'S'], ru: ['ы', 'Ы'] },
+  { code: 'KeyD', en: ['d', 'D'], ru: ['в', 'В'] },
+  { code: 'KeyF', en: ['f', 'F'], ru: ['а', 'А'] },
+  { code: 'KeyG', en: ['g', 'G'], ru: ['п', 'П'] },
+  { code: 'KeyH', en: ['h', 'H'], ru: ['р', 'Р'] },
+  { code: 'KeyJ', en: ['j', 'J'], ru: ['о', 'О'] },
+  { code: 'KeyK', en: ['k', 'K'], ru: ['л', 'Л'] },
+  { code: 'KeyL', en: ['l', 'L'], ru: ['д', 'Д'] },
+  { code: 'Semicolon', en: [';', ':'], ru: ['ж', 'Ж'] },
+  { code: 'Quote', en: ['\'', '"'], ru: ['э', 'Э'] },
+  { code: 'Enter', en: ['enter', 'enter'], ru: ['enter', 'enter'] },
+  { code: 'ShiftLeft', en: ['shift', 'shift'], ru: ['shift', 'shift'] },
+  { code: 'KeyZ', en: ['z', 'Z'], ru: ['я', 'Я'] },
+  { code: 'KeyX', en: ['x', 'X'], ru: ['ч', 'Ч'] },
+  { code: 'KeyC', en: ['c', 'C'], ru: ['с', 'С'] },
+  { code: 'KeyV', en: ['v', 'V'], ru: ['м', 'М'] },
+  { code: 'KeyB', en: ['b', 'B'], ru: ['и', 'И'] },
+  { code: 'KeyN', en: ['n', 'N'], ru: ['т', 'Т'] },
+  { code: 'KeyM', en: ['m', 'M'], ru: ['ь', 'Ь'] },
+  { code: 'Comma', en: [',', '<'], ru: ['б', 'Б'] },
+  { code: 'Period', en: ['.', '>'], ru: ['ю', 'Ю'] },
+  { code: 'Slash', en: ['/', '?'], ru: ['/', '?'] },
+  { code: 'ArrowUp', en: ['', ''], ru: ['', ''] },
+  { code: 'ShiftRight', en: ['shift', 'shift'], ru: ['shift', 'shift'] },
+  { code: 'ControlLeft', en: ['ctrl', 'ctrl'], ru: ['ctrl', 'ctrl'] },
+  { code: 'AltLeft', en: ['alt', 'alt'], ru: ['alt', 'alt'] },
+  { code: 'MetaLeft', en: ['', ''], ru: ['', ''] },
+  { code: 'Space', en: [' ', ' '], ru: [' ', ' '] },
+  { code: 'MetaRight', en: ['', ''], ru: ['', ''] },
+  { code: 'AltRight', en: ['alt', 'alt'], ru: ['alt', 'alt'] },
+  { code: 'ArrowLeft', en: ['', ''], ru: ['', ''] },
+  { code: 'ArrowDown', en: ['', ''], ru: ['', ''] },
+  { code: 'ArrowRight', en: ['', ''], ru: ['', ''] },
+  { code: 'ControlRight', en: ['ctrl', 'ctrl'], ru: ['ctrl', 'ctrl'] }];
 
 const Keyboard = {
-    properties: {
-        language: 'en',
-        value: '',
-        capsLock: false,
-        shift: false,
-        alt: false,
-    },
+  properties: {
+    language: 'en',
+    value: '',
+    capsLock: false,
+    shift: false,
+    alt: false,
+  },
 
-    createKeys(label) {
-        let row = null;
+  createKeys(label) {
+    let row = null;
 
-        return KEYS_CODE.map(key => {
-            if (key.code === 'Backquote' || key.code === 'Tab' || key.code === 'CapsLock' || key.code === 'ShiftLeft' || key.code === 'ControlLeft') {
-                row = document.createElement('div');
-                row.classList.add('row');
-            }
+    return KEYS_CODE.map((key) => {
+      const button = document.createElement('button');
+      button.setAttribute('type', 'button');
+      button.setAttribute('id', key.code);
+      button.classList.add('key');
+      button.innerHTML = key[label][0];
 
-            let button = document.createElement('button');
-            button.setAttribute('type','button');
-            button.setAttribute('id',key.code);
-            button.classList.add('key');
-            button.innerHTML = key[label][0];
+      const createNewRow = () => {
+        row = document.createElement('div');
+        row.classList.add('row');
+      };
 
-            if (key.code === 'Backspace' || key.code === 'Tab' || key.code === 'CapsLock' || key.code === 'Enter' || key.code === 'ShiftLeft' || key.code === 'ShiftRight' || key.code === 'AltLeft' || key.code === 'AltRight') {
-                button.classList.add('key--wide');
-            }
+      const keysForNewRow = ['Backquote', 'Tab', 'CapsLock', 'ShiftLeft', 'ControlLeft'];
+      if (keysForNewRow.includes(key.code)) createNewRow();
 
-             switch (key.code) {
-                case 'ArrowUp':
-                    button.classList.add('icon-up-dir');
-                    break;
+      const classForKeys = [{ code: 'ArrowUp', class: 'icon-up-dir' },
+        { code: 'ArrowLeft', class: 'icon-left-dir' },
+        { code: 'ArrowDown', class: 'icon-down-dir' },
+        { code: 'ArrowRight', class: 'icon-right-dir' },
+        { code: 'MetaLeft', class: 'icon-windows' },
+        { code: 'MetaRight', class: 'icon-windows' },
+        { code: 'AltLeft', class: 'key--wide' },
+        { code: 'AltRight', class: 'key--wide' },
+        { code: 'Backspace', class: 'key--wide' },
+        { code: 'Tab', class: 'key--wide' },
+        { code: 'CapsLock', class: 'key--wide' },
+        { code: 'Enter', class: 'key--wide' },
+        { code: 'ShiftLeft', class: 'key--wide' },
+        { code: 'ShiftRight', class: 'key--wide' },
+        { code: 'Space', class: 'key--double-wide' }];
 
-                case 'ArrowLeft':
-                    button.classList.add('icon-left-dir');
-                    break;
+      classForKeys.forEach((item) => {
+        if (key.code === item.code) button.classList.add(item.class);
+      });
 
-                case 'ArrowDown':
-                    button.classList.add('icon-down-dir');
-                    break;
+      row.append(button);
+      return row;
+    });
+  },
 
-                case 'ArrowRight':
-                    button.classList.add('icon-right-dir');
-                    break;
+  mouseEvents() {
+    document.addEventListener('mousedown', (e) => {
+      const elem = e.target;
+      if (elem.classList.contains('key') && elem.id !== 'CapsLock') elem.classList.add('press');
+    });
 
-                case 'MetaLeft':
-                case 'MetaRight':
-                    button.classList.add('icon-windows');
-                    break;
+    document.addEventListener('mouseup', (e) => {
+      const elem = e.target;
+      if (elem.classList.contains('key') && elem.id !== 'CapsLock') elem.classList.remove('press');
+    });
 
-                case 'Backspace':
-                    this.properties.capsLock = !this.properties.capsLock;
-                    button.addEventListener('click', () => {
-                        this.properties.value = this.properties.value.substring(0, this.properties.value.length - 1);
-                    });
-                    break;
+    document.addEventListener('click', (e) => {
+      const elem = e.target;
+      if (elem.classList.contains('key')) {
+        switch (elem.id) {
+          case 'Backspace':
+            this.properties.capsLock = !this.properties.capsLock;
+            this.properties.value = this.properties.value.substring(0, this.properties.value.length - 1);
+            break;
 
-                case 'Tab':
-                    this.properties.value += '  ';
-                    break;
+          case 'Tab':
+            this.properties.value += '  ';
+            break;
 
-                case 'CapsLock':
-                    button.addEventListener('click', () => {
-                        this.properties.capsLock = !this.properties.capsLock;
-                        this.toggleKeysValue(this.properties.capsLock ? 1 : 0);
-                        document.getElementById(key.code).classList.toggle('press', this.properties.capsLock);
-                    });
-                    break;
+          case 'CapsLock':
+            this.properties.capsLock = !this.properties.capsLock;
+            this.toggleKeysValue(+this.properties.capsLock);
+            elem.classList.toggle('press', this.properties.capsLock);
+            break;
 
-                case 'Enter':
-                    button.addEventListener('click', () => {
-                        this.properties.value += '\n';
-                    });
-                    break;
+          case 'Enter':
+            this.properties.value += '\n';
+            break;
 
-                case 'ShiftLeft':
-                case 'ShiftRight':
-                    if (this.properties.alt) this.toggleLanguage();
-                    else this.toggleKeysValue(1);
-                    break;
+          case 'ShiftLeft':
+          case 'ShiftRight':
+            if (this.properties.alt) this.toggleLanguage();
+            else this.toggleKeysValue(1);
+            break;
 
-                case 'Space':
-                    button.classList.add('key--space');
-                    this.properties.value += ' ';
-                    break;
+          case 'Space':
+            this.properties.value += ' ';
+            break;
 
-                default:
-                    button.addEventListener('click', (event) => {
-                        this.properties.value += event.target.innerHTML;
-                        document.querySelector('.textarea').innerHTML = this.properties.value;
-                    });
-            }
+          default:
+            this.properties.value += elem.textContent;
+        }
 
-            button.addEventListener('mousedown', () => {
-                if (key.code !== 'CapsLock') button.classList.add('press');
-            });
+        document.querySelector('.textarea').value = this.properties.value;
+      }
+    });
+  },
 
-            button.addEventListener('mouseup', () => {
-                if (key.code !== 'CapsLock') button.classList.remove('press');
-            });
+  keyboardEvents() {
+    document.addEventListener('keydown', (e) => {
+      this.properties.shift = e.shiftKey;
+      this.properties.alt = e.altKey;
 
-            row.append(button);
-            return row;
-        });
+      switch (e.code) {
+        case 'CapsLock':
+          this.properties.capsLock = !this.properties.capsLock;
+          this.toggleKeysValue(+this.properties.capsLock);
+          document.getElementById(e.code).classList.toggle('press', this.properties.capsLock);
+          break;
 
-    },
+        case 'ShiftLeft':
+        case 'ShiftRight':
+          if (this.properties.alt) this.toggleLanguage();
+          this.toggleKeysValue(1);
+          break;
 
-    keyboardEvents() {
-        document.addEventListener('keydown', (event) => {
-            this.properties.shift = event.shiftKey;
-            this.properties.alt = event.altKey;
+        default:
+          this.setFocus();
+      }
 
-            switch (event.code) {
-                case 'CapsLock':
-                    this.properties.capsLock = !this.properties.capsLock;
-                    this.toggleKeysValue(this.properties.capsLock ? 1 : 0);
-                    document.getElementById(event.code).classList.toggle('press', this.properties.capsLock);
-                    break;
+      if (e.code !== 'CapsLock') {
+        document.getElementById(e.code).classList.add('press');
+      }
+    });
 
-                case 'ShiftLeft':
-                case 'ShiftRight':
-                    if (this.properties.alt) this.toggleLanguage();
-                    this.toggleKeysValue(1);
-                    break;
-                default:
-                    this.setFocus();
-            }
+    document.addEventListener('keyup', (e) => {
+      this.properties.shift = e.shiftKey;
+      this.properties.alt = e.altKey;
 
-            if (event.code !== 'CapsLock') document.getElementById(event.code).classList.add('press');
-        });
+      switch (e.code) {
+        case 'ShiftLeft':
+        case 'ShiftRight':
+          if (this.properties.alt) this.toggleLanguage();
+          else this.toggleKeysValue(0);
+          break;
+        default:
+      }
 
-        document.addEventListener('keyup', (event) => {
-            this.properties.shift = event.shiftKey;
-            this.properties.alt = event.altKey;
+      if (e.code !== 'CapsLock') {
+        document.getElementById(e.code).classList.remove('press');
+      }
+    });
+  },
 
-            switch (event.code) {
-                case 'ShiftLeft':
-                case 'ShiftRight':
-                    if (this.properties.alt) this.toggleLanguage();
-                    else this.toggleKeysValue(0);
-                    break;
-            }
+  toggleKeysValue(key) {
+    document.querySelectorAll('.key').forEach((item, i) => {
+      item.innerHTML = KEYS_CODE[i][`${this.properties.language}`][key];
+    });
+  },
 
-            if (event.code !== 'CapsLock')  document.getElementById(event.code).classList.remove('press');
-        });
-    },
+  toggleLanguage() {
+    this.properties.language = (this.properties.language === 'en') ? 'ru' : 'en';
+  },
 
-    toggleKeysValue(key) {
-        document.querySelectorAll('.key').forEach((el, i) => {
-            el.innerHTML = KEYS_CODE[i][`${this.properties.language}`][key];
-        })
-    },
+  setFocus() {
+    document.querySelector('.textarea').focus();
+  },
 
-    toggleLanguage() {
-        this.properties.language = (this.properties.language === 'en') ? 'ru' : 'en';
-    },
+  init() {
+    const keyboard = document.createElement('div');
+    keyboard.className = 'keyboard';
 
-    setFocus() {
-        document.querySelector('.textarea').focus();
-    },
+    this.createKeys(this.properties.language).forEach((node) => {
+      keyboard.append(node);
+    });
+    this.mouseEvents();
+    this.keyboardEvents();
 
-    init() {
-        let keyboard = document.createElement('div');
-        keyboard.className = 'keyboard';
-        keyboard.append(...this.createKeys(this.properties.language));
-        this.keyboardEvents();
-
-        document.querySelector('.wrapper').append(keyboard);
-    }
+    document.querySelector('.wrapper').append(keyboard);
+  },
 };
 
-export {Keyboard};
+export default Keyboard;
