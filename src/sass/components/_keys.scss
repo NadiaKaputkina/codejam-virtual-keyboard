@@ -1,0 +1,51 @@
+.key {
+  display: inline-flex;
+  justify-content: center;
+
+  width: 47px;
+  height: 40px;
+
+  margin: 2px;
+  padding: 10px;
+
+  background-color: $key-background;
+  color: $key-color;
+
+  outline: none;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: $keyboard-background;
+  }
+
+  &--wide {
+    flex-grow: 2;
+    background-color: $key-background;
+  }
+
+  &--double-wide {
+    width: 30%;
+    background-color: $key-background;
+  }
+
+  &.press {
+    background-color: $key-active-background;
+  }
+}
+
+#Backspace,
+#Tab,
+#CapsLock,
+#ShiftLeft,
+#ShiftRight,
+#AltLeft,
+#AltRight,
+#ControlRight,
+#ControlLeft,
+#Space {
+  background-color: $key-dark-background;
+
+  &.press {
+    background-color: $key-active-background;
+  }
+}
